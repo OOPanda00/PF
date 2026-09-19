@@ -43,7 +43,7 @@ private fun due(ts: Long?) = ts?.let { SimpleDateFormat("dd/MM/yyyy", Locale("ar
 private const val NOTIFICATION_CHANNEL = "finance_due"
 
 private val LocalAppLanguage = staticCompositionLocalOf { "ar" }
-private fun tr(ar: String, en: String): String = if (LocalAppLanguage.current == "en") en else ar
+@Composable private fun tr(ar: String, en: String): String = if (LocalAppLanguage.current == "en") en else ar
 
 private fun showDueNotifications(activity: Activity, accounts: List<Account>) {
     val channel = NotificationChannel(NOTIFICATION_CHANNEL, "مواعيد الحسابات", NotificationManager.IMPORTANCE_DEFAULT).apply {
@@ -101,6 +101,7 @@ class MainActivity : FragmentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable private fun FinanceScreen(vm: FinanceViewModel, reserve: Int, darkMode: Boolean, language: String, appLock: Boolean, biometricEnabled: Boolean, biometricAvailable: Boolean) {
     val accounts by vm.accounts.collectAsState(); val txs by vm.transactions.collectAsState(); val balance by vm.balance.collectAsState()
     var tab by rememberSaveable { mutableIntStateOf(0) }; var selected by remember { mutableStateOf<Account?>(null) }; var detail by remember { mutableStateOf<Account?>(null) }; var editing by remember { mutableStateOf<Account?>(null) }; var deleting by remember { mutableStateOf<Account?>(null) }
