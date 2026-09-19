@@ -5,7 +5,12 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-android { namespace = "com.panda.finance"; compileSdk = 35
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+ namespace = "com.panda.finance"; compileSdk = 35
     defaultConfig { applicationId = "com.panda.finance"; minSdk = 26; targetSdk = 35; versionCode = 10; versionName = "1.9.0" }
 }
 
@@ -26,4 +31,12 @@ dependencies {
     implementation("androidx.biometric:biometric:1.1.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     testImplementation("junit:junit:4.13.2")
+}
+
+
+kotlin {
+    jvmToolchain(17)
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
 }
