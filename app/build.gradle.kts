@@ -11,7 +11,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
  namespace = "com.panda.finance"; compileSdk = 35
-    defaultConfig { applicationId = "com.panda.finance"; minSdk = 26; targetSdk = 35; versionCode = 10; versionName = "1.9.0" }
+    defaultConfig { applicationId = "com.panda.finance"; minSdk = 26; targetSdk = 35; versionCode = 10; versionName = "1.9.1" }
 }
 
 dependencies {
